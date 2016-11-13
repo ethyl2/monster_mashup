@@ -18,5 +18,5 @@ all with a `setTimeout()`.
 
 1. I added sounds to the click handlers.
 
-2. I refactored the code originially written to make it more compact, eliminating
+2. I refactored the code originally written to make it more compact, eliminating
 duplicate code.
