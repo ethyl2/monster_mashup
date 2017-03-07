@@ -8,6 +8,14 @@ p {
   font-size: 12px;
 }
 
+#audioControl {
+  float: right;
+}
+
+#audioControl img {
+  max-width: 2em;
+}
+
 #top {
   position: absolute;
   left: 191px;

@@ -30,8 +30,10 @@ $(document).ready(function(){
 
 		$(".face").click(function() {
 			var facePart = this.id;
-			model[facePart].sound.play();
-			model[facePart].sound.currentTime=0;
+			if (sound === true) {
+				model[facePart].sound.play();
+				model[facePart].sound.currentTime=0;
+			}
 			if (model[facePart].clix < 9) {
 				$(this).animate({left: "-=367px"}, 500);
 				model[facePart].clix++;
@@ -57,3 +59,16 @@ function lightning_three() {
 	$("#container #lightning3").fadeIn(250).fadeOut(250);
 	setTimeout("lightning_three()", 9000);
 };
+
+var sound = true;
+
+function audioToggle() {
+	// Audio icons are from https://www.iconfinder.com/search/?q=audio&license=2&price=free
+	if (sound == true) {
+		$("#audioIcon").attr("src", "images/mute.png");
+		sound = false;
+	} else {
+		$("#audioIcon").attr("src", "images/sound_on.png");
+		sound = true;
+	}
+}
