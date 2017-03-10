@@ -103,17 +103,14 @@ function randomize() {
 		var targetPosition = getRandom(10); // 10 possibilities of faces
 		var currentPosition = model[this.id].clix;
 		model[this.id].clix = targetPosition;
-		var move_to = targetPosition * 367; // 367 is the distance between face parts
+		var move_to = (targetPosition - currentPosition) * 367; // 367 is the distance between face parts
 		$(this).animate({left: "-=" + move_to + "px"}, 500);
 	})
 }
 
 function reset() {
-	console.log("Time to reset");
 	$(".face").each(function() {
-		var currentPosition = model[this.id].clix;
-		var move_num = currentPosition * 367;
-		$(this).animate({left: "+=" + move_num + "px"}, 500);
 		model[this.id].clix = 0;
+		$(this).animate({left:"0px"}, 500);
 	})
 }
