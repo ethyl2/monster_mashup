@@ -4,32 +4,9 @@
 */
 
 $(document).ready(function(){
-
 		goLightning();
 		window.onblur = stopLightning;
 		window.onfocus = goLightning;
-		//lightning_one();
-		//lightning_two();
-		//lightning_three();
-
-		var model = {
-			"head": {
-				clix: 0,
-				sound: new Audio("sounds/chime.wav")
-			},
-			"eyes": {
-				clix: 0,
-				sound: new Audio("sounds/single-chime.wav")
-			},
-			"nose": {
-				clix: 0,
-				sound: new Audio("sounds/horn.mp3")
-			},
-			"mouth": {
-				clix: 0,
-				sound: new Audio("sounds/mouth-harp.wav")
-			}
-		}
 
 		$(".face").click(function() {
 			var facePart = this.id;
@@ -45,8 +22,27 @@ $(document).ready(function(){
 				$(this).animate({left: "0px"}, 500);
 				model[facePart].clix = 0;
 			}
-		})
+		});
 });//end doc.onready function
+
+var model = {
+	"head": {
+		clix: 0,
+		sound: new Audio("sounds/chime.wav")
+	},
+	"eyes": {
+		clix: 0,
+		sound: new Audio("sounds/single-chime.wav")
+	},
+	"nose": {
+		clix: 0,
+		sound: new Audio("sounds/horn.mp3")
+	},
+	"mouth": {
+		clix: 0,
+		sound: new Audio("sounds/mouth-harp.wav")
+	}
+}
 
 var int1, int2, int3;
 
@@ -94,4 +90,30 @@ function audioToggle() {
 		$("#audioIcon").attr("src", "images/sound_on.png");
 		sound = true;
 	}
+}
+
+// Randomize monster face
+
+function getRandom(num) {
+	return Math.floor(Math.random() * num);
+}
+
+function randomize() {
+	$(".face").each(function() {
+		var targetPosition = getRandom(10); // 10 possibilities of faces
+		var currentPosition = model[this.id].clix;
+		model[this.id].clix = targetPosition;
+		var move_to = targetPosition * 367; // 367 is the distance between face parts
+		$(this).animate({left: "-=" + move_to + "px"}, 500);
+	})
+}
+
+function reset() {
+	console.log("Time to reset");
+	$(".face").each(function() {
+		var currentPosition = model[this.id].clix;
+		var move_num = currentPosition * 367;
+		$(this).animate({left: "+=" + move_num + "px"}, 500);
+		model[this.id].clix = 0;
+	})
 }

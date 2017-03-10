@@ -9,11 +9,23 @@ p {
 }
 
 #audioControl {
-  float: right;
+  position: absolute;
+  top: 0;
+  left: 100%;
 }
 
 #audioControl img {
   max-width: 2em;
+}
+
+#btnRandom, #btnReset {
+  float: right;
+  padding: 0.25em 1em;
+  background-color: #990099;
+  color: white;
+  border-radius: 0.5em;
+  text-transform: uppercase;
+  margin-left: 0.5em;
 }
 
 #top {
